@@ -1,0 +1,279 @@
+/*preset*/
+  *{
+    margin: 0px;
+    padding: 0px;
+    transition: all 0.25s;
+    font-size: 4vh;
+    font-weight: bold;
+  }
+  body{
+    padding: 10vh;
+    background-color: rgb(12,12,12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /*web-kit*/
+    input[type=file]{
+      display: none;
+    }
+    ::-webkit-inner-spin-button{
+
+      -webkit-appearance: none;
+    }
+    ::-webkit-scrollbar{
+
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background: rgb(207 149 56);
+      border-radius: 6px;
+    }
+/*ficha*/
+  .ficha{
+    outline: 5px solid rgb(207 149 56);
+    box-shadow: 0 0 2vw rgb(207 149 56);
+    width: 70vw;
+    height: 80vh;
+    background-color: rgb(27 28 30);
+  }
+    #buttons_page{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      height: 100%;
+    }
+    .button_page{
+      border-top: 5px solid rgb(207 149 56);
+      border-bottom: 5px solid rgb(207 149 56);
+      border-left: none;
+      border-right: none;
+      display: flex;
+      width: 65%;
+      height: 15%;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(90deg, rgba(28,25,28,0.11668417366946782) 0%, rgba(21,19,23,0.7609418767507002) 12%, rgba(24,21,25,0.9458158263305322) 29%, rgba(24,21,25,1) 47%, rgba(24,21,25,0.9374124649859944) 63%, rgba(24,21,25,0.68531162464986) 82%, rgba(28,25,28,0.12) 100%);
+      justify-content: center;
+      color: rgb(207 149 56);
+    }
+    .page{
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      height: 100%;
+    }
+      .mostruario{
+        width: 80%;
+        height: 90%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+        .drop{
+          margin-top: 3vh;
+          width: 85%;
+          height: 8vh;
+        }
+          .drop .header{
+            width: 100%;
+            height: 8vh;
+            background: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border: 4px solid rgb(207 149 56);
+          }
+            .drop .header .img{
+              background-position: center;
+              background-size: cover;
+              background-repeat: no-repeat;
+              width: 10%;
+              height: 100%;
+            }
+            .drop .header h1{
+              color: rgb(207 149 56);
+              font-weight: bold;
+            }
+            .drop .header button{
+              border-radius: 10px;
+              border: solid 4px rgb(207 149 56);
+              width: 7%;
+              background-color: rgb(207 149 56);
+            }
+          .drop .body{
+            height: 18vh;
+            width: 100%;
+            border: 4px solid rgb(207 149 56);
+            display: none;
+            justify-content: center;
+            color: rgb(207 149 56);
+            overflow-y: auto;
+            overflow-x: hidden;
+          }
+            .drop .body p{
+              width: 80%;
+              word-wrap: break-word;
+            }
+        .newsk{
+          width: 80%;
+          height: 40vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+          .newsk input[type=submit]{
+            color: rgb(207 149 56);
+            border: solid 4px rgb(207 149 56);
+            width: 80%;
+            background: none;
+          }
+          .newsk input[type=text], .newsk input[type=number], .newsk textarea, .newsk input[type=url]{    
+            padding: 2px;
+            width: 30%;
+            border: none;
+            color: rgb(207 149 56);
+            background-color: rgba(0,0,0,0);
+            text-align: center;
+          }
+            .newsk input[type=text]:focus, .newsk input[type=number]:focus, .newsk textarea, .newsk input[type=url]{
+
+              outline: none;
+            }
+      .exit{
+        position: absolute;
+        width: 10%;
+        height: 10%;
+        border: 4px solid rgb(207 149 56);
+        background: none;
+        color: rgb(207 149 56);
+        margin-top: -43%;
+        margin-left: -82%;
+      }
+      .dados{
+        width: 100%;
+        height: 55%;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-around;
+      }
+        .lab{
+          color: rgb(207 149 56);
+          text-align: center;
+        }
+        .dados .principal{
+          display: flex;
+          width: 100%;
+          height: 30%;
+          flex-direction: column;
+          padding-top: 3vh;
+        }
+          .dados .principal span{
+            height: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          }
+          .dados .principal .lab{
+            width: 50%;
+            height: 23%;
+          }
+        .dados .secundario{
+          padding-left: 10%;
+          padding-top: 3%;
+          display: flex;
+          width: 100%;
+          height: 56%;
+          flex-direction: column;
+          align-items: start;
+        }
+          .dados .secundario .lab{
+            text-align: start;
+            height: 30%;
+            width: 40%;
+          } 
+          .bar{
+            width: 100%;
+            height: 20%;
+            background-color: rgb(207 149 56);
+          }
+        .dados input[type=text], .dados input[type=number]{    
+          padding: 2px;
+          width: 30%;
+          border: none;
+          color: rgb(207 149 56);
+          background-color: rgba(0,0,0,0);
+          text-align: center;
+        }
+          .dados input[type=text]:focus, .dados input[type=number]:focus{
+
+            outline: none;
+          }
+      hr{
+        background-color: rgb(207 149 56);
+        width: 93%;
+        height: 1%;
+        border: none;
+      }
+      .atributos{
+        display: flex;
+        height: 45%;
+        width: 100%;
+      }
+       .atributos .separador{
+          display: flex;
+          height: 100%;
+          width: 50%;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+       }
+          .atributos .separador .lab{
+            text-align: end;
+          }
+         .atributos input[type=text], .atributos input[type=number]{    
+            padding: 2px;
+            width: 30%;
+            border: none;
+            color: rgb(207 149 56);
+            background-color: rgba(0,0,0,0);
+            text-align: center;
+          }
+            .atributos input[type=text]:focus, .atributos input[type=number]:focus{
+
+              outline: none;
+            }
+/*redimencionar para celular*/
+@media screen and (max-width: 700px){
+  *{
+    font-size: 2vh;
+  }
+  body{
+
+    padding: 0px;
+  }
+  .ficha{
+    width: 88vw;
+    margin-top: 25vh;
+    height: 70vw;
+  }
+    .exit{
+      position: absolute;
+      width: 10%;
+      height: 5%;
+      border: 4px solid rgb(207 149 56);
+      background: none;
+      color: rgb(207 149 56);
+      margin-top: -85%;
+      margin-left: -82%;
+    }
+}
