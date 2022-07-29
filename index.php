@@ -78,9 +78,9 @@
         <footer>
             <h3 class="corp">Corp.cas</h3>
             <div class="link">
-                <a href="#">a</a>
-                <a href="#">a</a>
-                <a href="#">a</a>
+                <a style="background-image: url('https://logodownload.org/wp-content/uploads/2017/11/discord-logo-4-1.png');" href="#">#</a>
+                <a style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1365px-Facebook_f_logo_%282019%29.svg.png');" href="#">#</a>
+                <a style="background-image: url('https://cdn.icon-icons.com/icons2/2368/PNG/512/github_logo_icon_143772.png');" href="#">#</a>
             </div>
         </footer>
         <!--Alert cel-->

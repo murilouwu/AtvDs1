@@ -110,9 +110,17 @@ footer{
     }
     footer .link{
         width: 10vw;
+        height: 4vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
     }
     footer a{
+        width: 2vw;
+        height: 4vh;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+        color: rgba(0 0 0 /0);
     }
