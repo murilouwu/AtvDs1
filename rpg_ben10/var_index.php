@@ -14,10 +14,6 @@
 					'vel'=>0,
 				);
 				$skill = array();
-				$item = array(
-						
-				);
-				$outros = array(
-					
-				);
+				$item = array(		);
+				$outros = array(		);
 			?>
