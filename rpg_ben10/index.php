@@ -18,27 +18,27 @@
 			<button onclick="mostrar(['#buttons_page','#paged'],1)" class="button_page">Transformações e invocações</button>
 			<button onclick="mostrar(['#buttons_page','#pagee'],1)" class="button_page">ADM</button>
 		</div>
-		<div id="pagea" class="page">
+		<form id="pagea" class="page" method="post">
 			<button onclick="mostrar(['#pagea','#buttons_page'],1)" class="exit">X</button>
 			<div class="dados">
 				<div class="principal">
 					<span>
 						<label class="lab">Nome:  Akashi Yuji</label>
-						<label class="lab">Nivel: <input type="number" min="0" value="0" name="nilvel"></label>
+						<label class="lab">Nivel: <input type="number" min="0" value="<?php echo($dados['nivel'])?>" name="nivel"></label>
 					</span>
 					<span>
-						<label class="lab">Idade: <input type="number" min="0" value="0" name="nilvel"></label>
-						<label class="lab">Class: <input type="text" name="class" value="..."></label>
+						<label class="lab">Idade: <input type="number" min="0" value="<?php echo($dados['idade'])?>" name="idade"></label>
+						<label class="lab">Class: <input type="text" name="class" value="<?php echo($dados['classe'])?>"></label>
 					</span>
 				</div>
 				<div class="secundario">
 					<label class="lab">Hp (%)
-						<input id="vida" type="number" name="vidapor" value="100" min="0" max="100">
+						<input id="vida" type="number" name="vidapor" value="<?php echo($dados['vida'])?>" min="0" max="100">
 						<div id="vidabar" class="bar"></div>
 					</label>
 					
 					<label class="lab">Mp (%)
-						<input id="mana" type="number" name="manapor" value="100" min="0" max="100">
+						<input id="mana" type="number" name="manapor" value="<?php echo($dados['mana'])?>" min="0" max="100">
 						<div id="manabar" class="bar"></div>
 					</label>
 				</div>	
@@ -46,17 +46,18 @@
 			<hr>
 			<div class="atributos">
 				<div class="separador">
-					<label class="lab">Força: <input type="number" min="0" value="0" name="for"></label>
-					<label class="lab">Agilidade: <input type="number" min="0" value="0" name="agl"></label>
-					<label class="lab">Sentidos: <input type="number" min="0" value="0" name="sen"></label>
+					<label class="lab">Força: <input type="number" min="0" value="<?php echo($dados['for'])?>" name="for"></label>
+					<label class="lab">Agilidade: <input type="number" min="0" value="<?php echo($dados['agl'])?>" name="agl"></label>
+					<label class="lab">Sentidos: <input type="number" min="0" value="<?php echo($dados['sen'])?>" name="sen"></label>
 				</div>
 				<div class="separador">
-					<label class="lab">Vitalidade: <input type="number" min="0" value="0" name="vit"></label>
-					<label class="lab">Inteligência: <input type="number" min="0" value="0" name="int"></label>
-					<label class="lab">Velocidade: <input type="number" min="0" value="0" name="vel"></label>
+					<label class="lab">Vitalidade: <input type="number" min="0" value="<?php echo($dados['vit'])?>" name="vit"></label>
+					<label class="lab">Inteligência: <input type="number" min="0" value="<?php echo($dados['int'])?>" name="int"></label>
+					<label class="lab">Velocidade: <input type="number" min="0" value="<?php echo($dados['vel'])?>" name="vel"></label>
 				</div>
 			</div>
-		</div>
+			<input type="submit" name="env" value="SALVAR">
+		</form>
 		<div id="pageb" class="page">
 			<button onclick="mostrar(['#pageb','#buttons_page'],1)" class="exit">X</button>
 			<div class="mostruario">
@@ -144,13 +145,19 @@
 		<div id="pagee" class="page">
 			<button onclick="mostrar(['#pagee','#buttons_page'],1)" class="exit">X</button>
 			<form class="newsk" method="post">
-				<label class="lab">Nome da skill:</label>
-				<input type="text" name="nmskll" placeholder="...">
+				<label class="lab">O que é:</label>
+				<select class="select" name="sel">
+					<option value="skill">Skill</option>
+					<option value="item">item</option>
+					<option value="outros">Transformação/invocação</option>
+				</select>
+				<label class="lab">Nome do item:</label>
+				<input type="text" name="nome" placeholder="...">
 				<label class="lab">Link da Imagem:</label>
-				<input type="url" name="imgsk" placeholder="...">
+				<input type="text" name="imagem" placeholder="...">
 				<label class="lab">Descrição:</label>
-				<textarea name="des">...</textarea>
-				<input type="submit" name="newskill" value="Criar skill">
+				<textarea name="descr">...</textarea>
+				<input type="submit" name="criar" value="Criar">
 			</form>
 		</div>
 	</div>
@@ -201,3 +208,111 @@
 	</script>
 </body>
 </html>
+<?php
+	if(isset($_POST['criar'])){
+		$es = $_POST['sel'];
+
+		$cod = '
+			$'.$es.'[count($'.$es.')] = array(
+				\'img\'=> \''.$_POST['imagem'].'\',
+				\'nome\'=> \''.$_POST['nome'].'\',
+				\'text\'=> \''.$_POST['descr'].'\'
+			);
+		';
+		eval($cod);
+		$sk = $skill;
+		$it = $item;
+		$ot = $outros;
+		$dad = $dados;
+		salvar($sk, $ot, $it, $dad);
+	}
+	if(isset($_POST['env'])){
+		$dads = array(
+			'nivel'=> $_POST['nivel'],
+			'idade'=> $_POST['idade'],
+			'classe'=> $_POST['class'],
+			'vida'=> $_POST['vidapor'],
+			'mana'=> $_POST['manapor'],
+			'for'=> $_POST['for'],
+			'agl'=> $_POST['agl'],
+			'sen'=> $_POST['sen'],
+			'vit'=> $_POST['vit'],
+			'int'=> $_POST['int'],
+			'vel'=> $_POST['vel']
+		);
+		$sk = $skill;
+		$out = $outros;
+		$itm = $item;
+		salvar($sk, $out, $itm, $dads);
+	}
+	function salvar($skill, $outros, $item, $dados){
+		$as = "'";
+		$vla = "";
+		$vlb = "";
+		$vlc = "";
+		for($i=0; $i<count($skill); $i++){
+			$base = '
+					array(
+						'.$as.'img'.$as.'=>'.$as.$skill[$i]['img'].$as.',
+						'.$as.'nome'.$as.'=>'.$as.$skill[$i]['nome'].$as.',
+						'.$as.'text'.$as.'=>'.$as.$skill[$i]['text'].$as.'
+					),
+			';
+			$vla = $vla.$base;
+		}
+		for($i=0; $i<count($item); $i++){
+			$base = '
+					array(
+						'.$as.'img'.$as.'=>'.$as.$item[$i]['img'].$as.',
+						'.$as.'nome'.$as.'=>'.$as.$item[$i]['nome'].$as.',
+						'.$as.'text'.$as.'=>'.$as.$item[$i]['text'].$as.'
+					),
+			';
+			$vlb = $vlb.$base;	
+		}
+		for($i=0; $i<count($outros); $i++){
+			$base = '
+					array(
+						'.$as.'img'.$as.'=>'.$as.$outros[$i]['img'].$as.',
+						'.$as.'nome'.$as.'=>'.$as.$outros[$i]['nome'].$as.',
+						'.$as.'text'.$as.'=>'.$as.$outros[$i]['text'].$as.'
+					),
+			';
+			$vlc = $vlc.$base;
+		}
+		$text = array(
+			'sk'=> $vla,
+			'it'=> $vlb,
+			'ot'=> $vlc
+		);
+		$resume = '
+			<?php
+				$dados = array(
+					'.$as.'nivel'.$as.'=>'.$dados['nivel'].',
+					'.$as.'idade'.$as.'=>'.$dados['idade'].',
+					'.$as.'classe'.$as.'=>'.$as.$dados['classe'].$as.',
+					'.$as.'vida'.$as.'=>'.$dados['vida'].',
+					'.$as.'mana'.$as.'=>'.$dados['mana'].',
+					'.$as.'for'.$as.'=>'.$dados['for'].',
+					'.$as.'agl'.$as.'=>'.$dados['agl'].',
+					'.$as.'sen'.$as.'=>'.$dados['sen'].',
+					'.$as.'vit'.$as.'=>'.$dados['vit'].',
+					'.$as.'int'.$as.'=>'.$dados['int'].',
+					'.$as.'vel'.$as.'=>'.$dados['vel'].',
+				);
+				$skill = array(
+					'.$text['sk'].'
+				);
+				$item = array(
+					'.$text['it'].'	
+				);
+				$outros = array(
+					'.$text['ot'].'
+				);
+			?>';
+		$file = fopen("var_index.php", 'w+');
+        	fwrite($file, $resume);
+        	fclose($file);
+        echo ('<script>window.location = "index.php";</script>');
+	}
+?>
